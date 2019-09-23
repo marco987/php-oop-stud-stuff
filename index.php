@@ -2,6 +2,8 @@
 
   class Persona {
 
+  use FullName;
+
   protected $nome;
   protected $cognome;
   protected $indirizzo;
@@ -52,8 +54,6 @@
 
   class Studente extends Persona {
 
-  use FullName;
-
   private $studi;
   private $tasse;
 
@@ -86,14 +86,12 @@
     }
 
     public function toString() {
-      return "STUDENTE<br>Nome: " . $this -> nome . "<br>Cognome: " . $this -> cognome . "<br>Indirizzo: " . $this -> indirizzo . "<br>Indirizzo di studi: " . $this -> studi . "<br>Tasse: " . $this -> tasse . "<br><br>";
+      return "STUDENTE<br>" . $this -> FullName() . "<br>Indirizzo: " . $this -> indirizzo . "<br>Indirizzo di studi: " . $this -> studi . "<br>Tasse: " . $this -> tasse . "<br><br>";
     }
   }
 
 
   class Professore extends Persona {
-
-  use FullName;
 
   private $specializzazione;
   private $paga;
@@ -127,7 +125,7 @@
     }
 
     public function toString() {
-      return "PROFESSORE<br>Nome: " . $this -> nome . "<br>Cognome: " . $this -> cognome . "<br>Indirizzo: " . $this -> indirizzo . "<br>Specializzazione: " . $this -> specializzazione . "<br>Paga: " . $this -> paga . "<br><br>";
+      return "PROFESSORE<br>" . $this -> FullName() . "<br>Indirizzo: " . $this -> indirizzo . "<br>Specializzazione: " . $this -> specializzazione . "<br>Paga: " . $this -> paga . "<br><br>";
     }
   }
 
@@ -135,26 +133,19 @@
   trait FullName {
 
     public function FullName() {
-      return "Nome e Cognome: " . $this -> nome . " " . $this -> cognome . "<br>";
+      return "Nome e Cognome: " . $this -> nome . " " . $this -> cognome;
     }
   }
 
+  // LOG RISULTATI
 
   $studente1 = new Studente("Marco", "Pace", "Padova", "Lettere", "3000 €");
-  $studente1 -> FullName();
+  echo $studente1 -> toString() . "<br>";
 
   $studente2 = new Studente("Lorem", "Ipsum", "Roma", "Archeologia", "2000 €");
-  $studente2 -> FullName();
-
-  echo $studente1 -> FullName();
-  echo $studente1 -> toString() . "<br>";
-  echo $studente1 -> FullName();
   echo $studente2 -> toString() . "<br>";
 
   $professore1 = new Professore("Tizio", "Caio", "Milano", "Letteratura inglese", "1800 €");
-  $professore1 -> FullName();
-
-  echo $professore1 -> FullName();
   echo $professore1 -> toString() . "<br>";
 
 
