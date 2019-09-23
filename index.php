@@ -52,6 +52,8 @@
 
   class Studente extends Persona {
 
+  use FullName;
+
   private $studi;
   private $tasse;
 
@@ -91,6 +93,8 @@
 
   class Professore extends Persona {
 
+  use FullName;
+
   private $specializzazione;
   private $paga;
 
@@ -128,14 +132,12 @@
   }
 
 
-// Disegnare il trait FullName con una funzione in grado
-// di ritornare una stringa contenente nome e cognome
-// separati da spazio, e utilizzarlo dove ritenuto utile.
+  trait FullName {
 
-// Definire i costruttori di ogni classe.
-// Definire la funzione toString() in ogni classe
-// in modo da poter loggare i risultati
+    public function FullName() {
+      return "<br>Nome e Cognome: " . $this -> nome . " " . $this -> cognome . "<br>"
+    }
+  }
 
-// Estendere le classi dove possibile
 
 ?>
